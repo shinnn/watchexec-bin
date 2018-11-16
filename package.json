@@ -1,0 +1,65 @@
+{
+	"name": "watchexec-bin",
+	"version": "1.0.0",
+	"description": "An installer for watchexec prebuilt binary",
+	"repository": "shinnn/watchexec-bin",
+	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+	"license": "ISC",
+	"scripts": {
+		"install": "node install.js",
+		"pretest": "eslint .",
+		"test": "nyc node test/test.js",
+		"prepublishOnly": "node prepublish.js"
+	},
+	"files": [
+		"*.bin",
+		"index.js",
+		"install.js"
+	],
+	"bin": {
+		"watchexec": "1.9.2.bin"
+	},
+	"keywords": [
+		"watchexec",
+		"prebuilt",
+		"install",
+		"installation",
+		"binary",
+		"rust",
+		"native",
+		"watch",
+		"watcher",
+		"cross-platform"
+	],
+	"dependencies": {
+		"arch": "^2.1.1",
+		"load-from-cwd-or-npm": "^3.0.1",
+		"platform-name": "^1.0.0",
+		"reject-unsatisfied-npm-version": "^1.0.0"
+	},
+	"devDependencies": {
+		"@shinnn/eslint-config": "^6.8.1",
+		"eslint": "^5.9.0",
+		"nock": "^10.0.2",
+		"nyc": "^13.1.0",
+		"nyc-config-common": "^1.0.1",
+		"pretend-platform": "^2.0.0",
+		"tape": "^4.9.1"
+	},
+	"eslintConfig": {
+		"extends": "@shinnn",
+		"overrides": [
+			{
+				"files": [
+					"install.js"
+				],
+				"rules": {
+					"no-process-exit": "off"
+				}
+			}
+		]
+	},
+	"nyc": {
+		"extends": "nyc-config-common"
+	}
+}
