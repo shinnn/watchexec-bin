@@ -1,13 +1,9 @@
-branches:
-  except: /^v\d/
+if: branch !~ ^v\d
 language: node_js
 node_js: node
 matrix:
   include:
   - dist: xenial
-    env:
-    - COVERALLS_SERVICE_NAME=travis-pro
-    - secure: OHUzrdojdh3fuwabvBvt6v6zBQIshgGBqdJZLsL9DwLolDIEW47/9pDux3dQPXxM21mm6E7WU2FA3IuTVnEhYONATaobrhRdLQVO4mX7cR30sLdRQBs13TNTsTU02NCEVvS3FjD186dbHUg5fGsfsW0AitzhZa/R1hd2LCl2sbiHuhTul1J1vvGw6eqQSa9lPXoXz9Z9fk8HFAjWmZIRnIVO8ljJUW2ZWHM3CvYtEefOL4CqYAwomGP7rcpGn+SbrUjN9wrc6qmktwGFLytzXwQf9euDECg+6bnE6NhMf1KERVjuSKKFbwYMZO0ahz1FEspItVqf2jU9RtTLSc55kxtpjP8s7E1F8uTnsAcNsBEWibF42eFeGq8lU5L+QZQXFxyi7uQQznhet/mFGZQexc61Q8THT3CHwLw2gz7LPSV0eVSGeMGw/n8bzZYWeSdQdUqZycZCYevBPmJ8HhsdMwbNLDBqLLs4j7vJROmiK7yfGuuxH2qOTDqCVFpSsH4zOOF5B5wlWXldKDC3wkW5WFUHTOnABzSAzWh776YJnXfn5+GF24vSmhdhmoQG7mRqJEjyylFgqPo3oxyPtLBFDKtsbfftcULbjWCLD8fZhGHiW5LR71+Vic8rI3gTnggaSZqcSjlhEv89ux0MP34KiBY3nPOEWhG+JVEesaNWZDo=
     after_success: node_modules/.bin/nyc report | npx coveralls
   - os: osx
     osx_image: xcode10.1
